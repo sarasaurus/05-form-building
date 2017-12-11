@@ -77,13 +77,12 @@ articleView.setTeasers = () => {
 // COMMENT: Where is this function called? Why?
 // this will be called on the new article page, so that different scripts will run on different pages
 articleView.initNewArticlePage = () => {
-  // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
-
-
-  // TODO: The new articles we create will be copy/pasted into our source data file.
+  // DONE: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
+  $('.tab-content').show();
+  // DONE: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
-
-  $('#article-json').on('focus', function(){
+  $('#article-export').hide();
+  $('#json-export').on('focus', function(){
     this.select();
   });
 
