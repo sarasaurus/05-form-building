@@ -9,6 +9,7 @@ function Article (rawDataObj) {
   this.category = rawDataObj.category;
   this.body = rawDataObj.body;
   this.publishedOn = rawDataObj.publishedOn;
+  //articles.push(this);
 }
 
 Article.prototype.toHtml = () => {
