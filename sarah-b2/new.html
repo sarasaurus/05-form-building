@@ -10,8 +10,21 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
-    <link>
-    <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+    <link rel ="stylesheet" href="styles/railscasts.css">
+    <!-- DONE: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
+    <script id="article-template" type="text/x-handlebars-template">
+          <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+            <header>
+              <h1>{{title}}</h1>
+              <div class="byline">
+                By <address><a href="{{authorUrl}}">{{author}}</a></address>
+                {{publishStatus}}
+              </div>
+            </header>
+            <section class="article-body">{{{body}}}</section>
+            <a href="#" class="read-on">Read on &rarr;</a>
+          </article>
+        </script>
     </head>
   <body>
     <header class="site-header clearfix">
@@ -41,6 +54,15 @@
            4. Author's URL
            5. Article category
            6. Some way to know if this article is a draft or is published -->
+      <form id="article-form">
+        <input placeholder="title" id="article-title" type="text" required>
+        <textarea placeholder="body" name="" id="article-body" cols="30" rows="10" required>
+        <input placeholder = "author" id ="article-author" type="text">
+        <input placeholder = "url" id ="author-url" type="url" pattern="\w+?\.\w+@\w+\.\w+">
+        <input placeholder = "category" id ="article-category" type="text">
+        <label for=""><input id ="article-pubdate" type="checkbox">Published</label>
+                
+      </form>
       </section>
 
       <section id="articles" class="tab-content">
