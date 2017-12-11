@@ -1,7 +1,7 @@
 'use strict';
 
 let articleView = {};
-
+let article ={};
 
 articleView.populateFilters = () => {
   $('article').each(function() {
@@ -84,13 +84,14 @@ articleView.initNewArticlePage = () => {
   $('#article-export').hide();
   $('#article-json').on('focus', function(){
     this.select();
+    localStorage.setItem('published', JSON.stringify(article));
   });
   //DONE: Add an event handler to update the preview and the export field if any inputs change.
   $('#article-form').on('change', 'input, textarea', articleView.create);
 };
 
 articleView.create = () => {
-  let article 
+  //let article 
   // DONE: Set up a variable to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
   $('#articles').empty(); // empty doesn't return anything, and doesn't obliterate everthing after it, like gutting a pumpkin, 
@@ -112,7 +113,10 @@ articleView.create = () => {
   $('pre code').each((i, block) => hljs.highlightBlock(block));
   //hljs is the name of object in the highlight js library, highlightBlock is a method of that object.. this is an example of an anonymous function
   // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+
   $('#article-export').show().find('#article-json').val(JSON.stringify(article));
+  
+
 };
 
 
