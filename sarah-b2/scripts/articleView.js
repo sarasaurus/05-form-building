@@ -2,6 +2,7 @@
 
 let articleView = {};
 
+
 articleView.populateFilters = () => {
   $('article').each(function() {
     if (!$(this).hasClass('template')) {
@@ -91,12 +92,14 @@ articleView.initNewArticlePage = () => {
 };
 
 articleView.create = () => {
+  let article 
+
   // DONE: Set up a variable to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
   $('#articles').empty(); // empty doesn't return anything, and doesn't obliterate everthing after it, like gutting a pumpkin, 
 
   // DONE: Instantiate an article based on what's in the form fields:
-  article = new article({
+  article = new Article({
     // now we pass in object literal from article.js
     author: $('#article-author').valueOf(),
     authorUrl: $('#author-url').valueOf(),
@@ -104,9 +107,8 @@ articleView.create = () => {
     category: $('#article-category').valueOf(),
     body: $('#article-body').valueOf(),
     publishedOn: $('#article-pubdate:checked').length ? new Date() : null,//:checked is a pseudo selctor, so now if chekced, ternary statement, left true, right false
-
-
-
+  });
+  console.log('article is:', article);
   // DONE: Use our interface to the Handblebars template to put this new article into the DOM:
   $('#articles').append(article.toHtml());
 
@@ -118,11 +120,12 @@ articleView.create = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// this function is populating the drop down menus and their filter functions as well as the tab-functionality of the main-nav menu. It will be called on the the index.html page.
 articleView.initIndexPage = () => {
+  articles.forEach(article => $('#articles').append(article.toHtml()));
   articleView.populateFilters();
   articleView.handleCategoryFilter();
   articleView.handleAuthorFilter();
   articleView.handleMainNav();
   articleView.setTeasers();
-};
+}
