@@ -112,9 +112,9 @@ articleView.create = () => {
 
   // DONE: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each((i, block) => hljs.highlightBlock(block));
-  //hljs is the name of object in the highlight js library, highlightBlock is a method of that object.. this is an exmple of an anonymous function
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#article-export').show().find('#article-json').val(JSON.stringify(article));
+  //hljs is the name of object in the highlight js library, highlightBlock is a method of that object.. this is an example of an anonymous function
+  // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  $('#article-export').show().find('#json-export').val(JSON.stringify(article));
 };
 
 // COMMENT: Where is this function called? Why?
