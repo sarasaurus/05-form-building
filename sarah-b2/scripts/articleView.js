@@ -74,7 +74,7 @@ articleView.setTeasers = () => {
 };
 
 // COMMENT: Where is this function called? Why?
-// PUT YOUR RESPONSE HERE
+// this will be called on the new article page, so that different scripts will run on different pages
 articleView.initNewArticlePage = () => {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
 
@@ -91,21 +91,30 @@ articleView.initNewArticlePage = () => {
 };
 
 articleView.create = () => {
-  // TODO: Set up a variable to hold the new article we are creating.
+  // DONE: Set up a variable to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
+  $('#articles').empty(); // empty doesn't return anything, and doesn't obliterate everthing after it, like gutting a pumpkin, 
+
+  // DONE: Instantiate an article based on what's in the form fields:
+  article = new article({
+    // now we pass in object literal from article.js
+    author: $('#article-author').valueOf(),
+    authorUrl: $('#author-url').valueOf(),
+    title: $('#article-title').valueOf(),
+    category: $('#article-category').valueOf(),
+    body: $('#article-body').valueOf(),
+    publishedOn: $('#article-pubdate:checked').length ? new Date() : null,//:checked is a pseudo selctor, so now if chekced, ternary statement, left true, right false
 
 
-  // TODO: Instantiate an article based on what's in the form fields:
 
+  // DONE: Use our interface to the Handblebars template to put this new article into the DOM:
+  $('#articles').append(article.toHtml());
 
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-
-
-  // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
-  $('pre code').each();
-
+  // DONE: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
+  $('pre code').each((i, block) => hljs.highlightBlock(block));
+  //hljs is the name of object in the highlight js library, highlightBlock is a method of that object.. this is an exmple of an anonymous function
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-
+  $('#article-export').show().find('#article-json').val(JSON.stringify(article));
 };
 
 // COMMENT: Where is this function called? Why?
