@@ -91,7 +91,7 @@ articleView.initNewArticlePage = () => {
 };
 
 articleView.create = () => {
-  //let article 
+  let article 
   // DONE: Set up a variable to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
   $('#articles').empty(); // empty doesn't return anything, and doesn't obliterate everthing after it, like gutting a pumpkin, 
