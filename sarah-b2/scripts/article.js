@@ -28,6 +28,4 @@ Article.prototype.toHtml = function() {
 rawData.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
 
 rawData.forEach(articleObject => articles.push(new Article(articleObject)));
-articles.push(new Article (JSON.parse(localStorage.getItem('published'))));
 
-//articles.forEach(article => $('#articles').append(article.toHtml()));
